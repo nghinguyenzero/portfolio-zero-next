@@ -1,10 +1,11 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+<!-- https://app.swaggerhub.com/apis-docs/paulnguyen.mn/easy-javascript/1.0.0 -->
 ## Getting Started
 
 First, run the development server:
 
-# USING NODE 14
+# USING NODE 20
 
 ```bash
 npm run dev
