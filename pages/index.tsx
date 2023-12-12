@@ -65,7 +65,7 @@ const Home: NextPageWithLayout = () => {
 
 				<div style={{ marginTop: '2000px' }}></div>
 
-				<Link href="/about">
+				<Link href="/about" legacyBehavior>
 					<a>Go to About</a>
 				</Link>
 			</main>

@@ -15,7 +15,7 @@ export default function PostListPage({ posts }: PostListPageProps) {
 			<ul>
 				{posts.map((post) => (
 					<li key={post.id}>
-						<Link href={`/posts/${post.id}`}>
+						<Link href={`/posts/${post.id}`} legacyBehavior>
 							<a>{post.title}</a>
 						</Link>
 					</li>

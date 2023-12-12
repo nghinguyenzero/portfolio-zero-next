@@ -8,11 +8,11 @@ export function AdminLayout({ children }: LayoutProps) {
 			<h1>Admin Layout</h1>
 			<div>Sidebar</div>
 
-			<Link href="/">
+			<Link href="/" legacyBehavior>
 				<a>Home</a>
 			</Link>
 
-			<Link href="/about">
+			<Link href="/about" legacyBehavior>
 				<a>About</a>
 			</Link>
 
