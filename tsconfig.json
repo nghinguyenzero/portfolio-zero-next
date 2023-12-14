@@ -33,6 +33,8 @@
       ],
       "@/models/*": [
         "./models/*"
+      ],"@/api/*": [
+        "./api-client/*"
       ]
     },
     "incremental": true
