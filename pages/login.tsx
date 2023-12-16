@@ -1,27 +1,31 @@
 import * as React from 'react';
-import { authApi } from "@/api/auth-api";
+import { useAuth } from '../hooks';
 
 export default function LoginPage () {
+
+    const { profile, login, logout} =  useAuth({
+        revalidateOnMount: false,
+    })
     async function handleLoginClick () {
         try {
-            await authApi.login({
-                username: 'nghinv1',
-                password: 'nghinv1',
-            })
+            await login()
+            console.log('redirect to dasboard');
         } catch (error) {
-            console.log('fail to login ', error)
+            console.log('failed to login ', error)
         }
     }
-    async function handleGetProfileClick () {
-        try {
-            await authApi.getProfile()
-        } catch (error) {
-            console.log('fail to get profile ', error)
-        }
-    }
+    // async function handleGetProfileClick () {
+    //     try {
+    //         await authApi.getProfile()
+    //         await logout()
+    //         console.log('redirect to login page');
+    //     } catch (error) {
+    //         console.log('fail to get profile ', error)
+    //     }
+    // }
     async function handleLogoutClick () {
         try {
-            await authApi.logout()
+            await logout()
         } catch (error) {
             console.log('fail to logout ', error)
         }
@@ -29,9 +33,9 @@ export default function LoginPage () {
 
   return (
     <div>
-        <h1>Login page</h1>
+        <h1>Login page {JSON.stringify(profile || {}, null, 4)}</h1>
         <button onClick={handleLoginClick}>Login</button>
-        <button onClick={handleGetProfileClick}>Get profile</button>
+        {/* <button onClick={handleGetProfileClick}>Get profile</button> */}
         <button onClick={handleLogoutClick}>Logout</button>
     </div>
   );
