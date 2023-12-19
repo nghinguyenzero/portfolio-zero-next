@@ -1,24 +1,25 @@
-import StudentDetail from '@/components/swr/StudentDetail';
-import React, {useState} from 'react';
+import { StudentDetail } from '@/components/swr'
+import React, { useState } from 'react'
 
-export default function SwrPage () {
+export default function SWRPage() {
+	const [detailList, setDetailList] = useState([1, 1, 1])
 
-  const [ detailList, setDetailList] = useState([1,2,3])
-  function handleClickAdd () {
-    setDetailList( prevList => [...prevList, 1])
+	function handleAddClick() {
+		setDetailList((prevList) => [...prevList, 1])
+	}
 
-  }
-  return (
-    <div>
-      <h1>SWR</h1>
-      <button onClick={handleClickAdd}>add detail</button>
-      <ul>
-        {detailList.map((item, idx) =>(
-          <li key={idx}><StudentDetail studentId='lea319jollj7y1rs'/></li>
-        ))}
-        <li><StudentDetail studentId='lea319jollj7y1rs'/></li>
+	return (
+		<div>
+			<h1>SWR Playground</h1>
+			<button onClick={handleAddClick}>Add detail</button>
 
-      </ul>
-    </div>
-  );
+			<ul>
+				{detailList.map((x, index) => (
+					<li key={index}>
+						<StudentDetail studentId="sktwi1cgkkuif36f3" />
+					</li>
+				))}
+			</ul>
+		</div>
+	)
 }

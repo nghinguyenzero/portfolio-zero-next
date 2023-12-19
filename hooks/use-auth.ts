@@ -9,6 +9,8 @@ export function useAuth (options?: Partial<PublicConfiguration>) {
         revalidateOnFocus: true,
         ...options
     })
+    console.log({profile, error});
+     const firstLoading = profile === undefined && error === undefined
 
     async function login() {
         await authApi.login({
@@ -20,11 +22,11 @@ export function useAuth (options?: Partial<PublicConfiguration>) {
 
     async function logout() {
         await authApi.logout()
-        await mutate({}, false)
+        await mutate(null, false)
     }
 
     return { 
-        profile, error , login, logout
+        profile, error , login, logout, firstLoading
     }
 
 }
