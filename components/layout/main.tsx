@@ -1,7 +1,7 @@
 import { LayoutProps } from '@/models/index'
 import React, { useEffect } from 'react'
 import Link from 'next/link'
-import { Box, Stack } from '@mui/material'
+import { Box, Container, Stack } from '@mui/material'
 import { Footer, Header } from '../common'
 
 export function MainLayout({ children }: LayoutProps) {
@@ -15,6 +15,15 @@ export function MainLayout({ children }: LayoutProps) {
 		<Stack minHeight='100vh'>
 			<Header/>
 			<Box component='main' flexGrow={1}>
+				<Container 
+					maxWidth='sm' 
+					sx={{bgcolor:'primary.main'}}
+				> SM</Container>
+
+				<Container 
+					maxWidth='md' 
+					sx={{bgcolor:'primary.main'}}
+				>MD</Container>
 				<Link href="/" legacyBehavior>
 					<a>Home</a>
 				</Link>
