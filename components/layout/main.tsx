@@ -15,7 +15,7 @@ export function MainLayout({ children }: LayoutProps) {
 		<Stack minHeight='100vh'>
 			<Header/>
 			<Box component='main' flexGrow={1}>
-				<Container 
+				{/* <Container 
 					maxWidth='sm' 
 					sx={{bgcolor:'primary.main'}}
 				> SM</Container>
@@ -23,8 +23,8 @@ export function MainLayout({ children }: LayoutProps) {
 				<Container 
 					maxWidth='md' 
 					sx={{bgcolor:'primary.main'}}
-				>MD</Container>
-				<Link href="/" legacyBehavior>
+				>MD</Container> */}
+				{/* <Link href="/" legacyBehavior>
 					<a>Home</a>
 				</Link>
 
@@ -33,7 +33,7 @@ export function MainLayout({ children }: LayoutProps) {
 				</Link>
 				<Link href="/works" legacyBehavior>
 					<a>Works</a>
-				</Link>
+				</Link> */}
 			
 				{children}
 			</Box>
