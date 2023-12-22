@@ -9,17 +9,17 @@ export function RecentPosts () {
     const postList : Post[] = [
         {
             id: 1,
-            title: 'Making a title for demo',
+            title: 'Love 💗',
             publishDate: '1703261774633',
-            tagList: ['Roomate', 'Friend'],
-            description: ' description description description  description description description description description description description description description'
+            tagList: ['Family', 'Friend',],
+            description: `Love is an intricate dance of emotions, weaving connections between hearts. It's a boundless force, nurturing souls, transcending barriers, and painting life with hues of passion, tenderness, and understanding.`
         },
         {
             id: 2,
-            title: 'Making a title for demo',
+            title: 'Hope 🍀',
             publishDate: '1703261774633',
-            tagList: ['Figma', 'Icon'],
-            description: 'description, description, description  description description description description description description description description description'
+            tagList: ['Light', 'Faith'],
+            description: `Hope is the beacon amid darkness, a whisper of possibility when all seems lost. It fuels resilience, kindles dreams, and breathes life into aspirations, offering solace, strength, and unwavering optimism.`
         }
 
     ]

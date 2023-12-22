@@ -19,18 +19,20 @@ export function HeroSection () {
                         component='h1' variant='h3' fontWeight='bold' 
                         mb={{ xs: 3.5, md: 5}}
                     >
-                    Hi I am Nghi, <br/> Creative Dev
+                    Hiii! Nghi nè ^^ <br/>  Miss me yet ?
                     </Typography>
 
                     <Typography 
                         mb={{ xs: 3.5, md: 5}}
                     >
+                       
+
                     🌻live for the present🌼
-                    I have a passion for running. Running is the simplest physical activity that we can do and it is also the least time-consuming sport for staying healthy.
-                    Every 3 days at 10 pm, I usually run 3 rounds around the park. I run alone and while running I listen to music or audio motivation. Music is also great for relaxing.
+                    <br/>
+                    Living in the present means shedding the burdens of the past and the anxieties of the future, focusing instead on the magic of the current moment. It encourages us to create memories, share laughter, and embrace spontaneity. It’s a mindset that infuses life with richness, depth, and unbridled joy, reminding us that the present is where true living happens.
                     </Typography>
 
-                    <Button variant='contained' size='large'>Dowload resume</Button>
+                    <Button variant='contained' size='large'>Do not touch me !</Button>
                 </Box>
                 
                 <Box sx={{minWidth:'240px', boxShadow: '-5px 13px',
