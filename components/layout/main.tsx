@@ -1,4 +1,4 @@
-import { LayoutProps } from '@/models/index'
+import { LayoutProps } from '@/models'
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { Box, Container, Stack } from '@mui/material'

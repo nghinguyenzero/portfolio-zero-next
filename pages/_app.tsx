@@ -1,6 +1,6 @@
 import { EmptyLayout } from '@/components/layout'
-import { AppPropsWithLayout } from '@/models/index'
-import { createEmotionCache, theme } from '@/utils/index'
+import { AppPropsWithLayout } from '@/models'
+import { createEmotionCache, theme } from '@/utils'
 import { CacheProvider } from '@emotion/react'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
