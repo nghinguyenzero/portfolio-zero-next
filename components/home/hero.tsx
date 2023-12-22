@@ -25,7 +25,7 @@ export function HeroSection () {
                     <Typography 
                         mb={{ xs: 3.5, md: 5}}
                     >
-                    A ACTIVITY / SPORT
+                    🌻live for the present🌼
                     I have a passion for running. Running is the simplest physical activity that we can do and it is also the least time-consuming sport for staying healthy.
                     Every 3 days at 10 pm, I usually run 3 rounds around the park. I run alone and while running I listen to music or audio motivation. Music is also great for relaxing.
                     </Typography>

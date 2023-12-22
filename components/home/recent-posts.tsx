@@ -3,8 +3,26 @@ import { Box } from '@mui/system';
 import Link from 'next/link';
 import * as React from 'react';
 import { PostCard } from './post-card';
+import { Post } from '@/models';
 
 export function RecentPosts () {
+    const postList : Post[] = [
+        {
+            id: 1,
+            title: 'Making a title for demo',
+            publishDate: '1703261774633',
+            tagList: ['Roomate', 'Friend'],
+            description: ' description description description  description description description description description description description description description'
+        },
+        {
+            id: 2,
+            title: 'Making a title for demo',
+            publishDate: '1703261774633',
+            tagList: ['Figma', 'Icon'],
+            description: 'description, description, description  description description description description description description description description description'
+        }
+
+    ]
   return (
     <Box component='section' bgcolor='secondary.light' pt={2} pb={4}>
         <Container>
@@ -37,12 +55,17 @@ export function RecentPosts () {
                     }
                 }}
             >
-                <Box>
+                { postList.map( post => (
+                    <Box key={post.id}>
+                        <PostCard post={post}></PostCard>
+                    </Box>
+                    ))
+                }
+                
+
+                {/* <Box>
                     <PostCard></PostCard>
-                </Box>
-                <Box>
-                    <PostCard></PostCard>
-                </Box>
+                </Box> */}
 
             </Stack>
         </Container>
