@@ -2,6 +2,6 @@
 module.exports = {
   reactStrictMode: true,
 	images: {
-		domains: ['res.cloudinary.com', 'placehold.co', 'js-post-api.herokuapp.com'],
+		domains: ['res.cloudinary.com', 'placehold.co', 'js-post-api.herokuapp.com', 'drive.google.com'],
 	},
 }
