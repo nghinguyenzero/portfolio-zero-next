@@ -1,4 +1,4 @@
-// import { Header } from '@/components/common'
+import { Header } from '@/components/common'
 import { AdminLayout } from '@/components/layout'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
@@ -44,7 +44,7 @@ export default function AboutPage(props: AboutPageProps) {
 		<div>
 			<h1>About Page</h1>
 
-			{/* <Header/> */}
+			<Header/>
 
 			<ul className="post-list">
 				{postList.map((post: any) => (

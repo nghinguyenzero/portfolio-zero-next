@@ -17,7 +17,7 @@ export function Seo({data}: SeoProps) {
     const { title, description, url, thumbnailUrl} = data
 	return (<Head>
         {/* <!-- Primary Meta Tags --> */}
-        <title>Portfolio | Nghi Nguyen</title>
+        <title>{title}</title>
         <meta name="title" content={title} />
         <meta name="description" content={description} />
 
