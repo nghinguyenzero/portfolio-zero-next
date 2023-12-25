@@ -7,16 +7,14 @@ import rehypeDocument from 'rehype-document'
 import rehypeFormat from 'rehype-format'
 import rehypeSlug from 'rehype-slug'
 import rehypeStringify from 'rehype-stringify/lib'
-// import remarkParse from 'remark-parse/lib'
 import remarkPrism from 'remark-prism'
 import remarkRehype from 'remark-rehype'
 import remarkToc from 'remark-toc'
 import { unified } from 'unified'
 import Script from 'next/script'
 import { Box } from '@mui/material'
-import { Seo } from '@/components/common/header/seo'
+import { Seo } from '@/components/common'
 import remarkParse from 'remark-parse'
-// import { Seo } from '@/components/common'
 
 export interface BlogPageProps {
 	post: Post
@@ -29,7 +27,7 @@ export default function PostDetailPage({ post }: BlogPageProps) {
 		<Box>
 			<Seo
 				data={{
-					title: `${post.title} | Easy Frontend Blog`,
+					title: `${post.title} | NghiNV Blog`,
 					description: post.description,
 					url: `${process.env.HOST_URL}/blog/${post.slug}`,
 					thumbnailUrl:

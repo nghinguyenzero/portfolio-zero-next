@@ -1,4 +1,4 @@
-import { Seo } from '@/components/common/header/seo'
+import { Seo } from '@/components/common/seo'
 import { FeaturedWorks, HeroSection, RecentPosts } from '@/components/home'
 import { MainLayout } from '@/components/layout'
 import { NextPageWithLayout } from '@/models/common'
@@ -22,8 +22,8 @@ const Home: NextPageWithLayout = () => {
 	return (
 		<Box>
 			<Seo data={{
-				title: 'NextJs Potifolo',
-				description: 'Template NextJs Potifolo',
+				title: 'NextJs Potifolo NghiNV',
+				description: 'Template NextJs Potifolo NghiNV',
 				thumbnailUrl: 'https://drive.google.com/file/d/1ow9xLxXDo7eJdhAhQSUKXtcc0-fm9z1k/view',
 				url: 'https://zero-next-six.vercel.app/',
 			}}/>

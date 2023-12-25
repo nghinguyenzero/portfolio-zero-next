@@ -1,12 +1,13 @@
 ---
 slug: git-dung-trong-du-an-thuc-te
 title: Git - Các lệnh được dùng từ lúc nhận task cho tới lúc tạo PR 🎉
-author: Hậu Nguyễn
-author_title: Senior Software Engineer at fram^
-author_url: https://github.com/paulnguyen-mn
+author: Nghi Nguyễn
+author_title: Software Engineer at fram^
+author_url: https://github.com/nghinguyenzero
 author_image_url: https://avatars3.githubusercontent.com/u/31444102?s=400&u=c545a527aa31843e1361462e410c0f51863e8e26&v=4
 tags: [git, git trong dự án thực tế]
 date: '2022-06-18T10:00:00Z'
+image: https://images.unsplash.com/photo-1549923746-c502d488b3ea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80
 ---
 
 Khi nhắc tới git có khá là nhiều lệnh khác nhau, tuy nhiên trong thực tế sử dụng trong dự án thì có những lệnh nào được sử dụng nhiều nhất? 🤔 Hãy cùng mình khám phá qua bài blog này nhé! 😉
