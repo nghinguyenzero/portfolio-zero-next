@@ -1,6 +1,7 @@
 import useSWR from "swr";
 import { PublicConfiguration } from "swr/_internal";
 import { authApi } from "../api-client";
+import { LoginPayload } from "@/models";
 
 export function useAuth (options?: Partial<PublicConfiguration>) {
 
@@ -12,11 +13,8 @@ export function useAuth (options?: Partial<PublicConfiguration>) {
     console.log({profile, error});
      const firstLoading = profile === undefined && error === undefined
 
-    async function login() {
-        await authApi.login({
-            username: "nghinv",
-            password: "nghinv"
-        })
+    async function login(payload: LoginPayload) {
+        await authApi.login(payload)
         await mutate()
     }
 

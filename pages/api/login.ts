@@ -32,6 +32,13 @@ export default function handler(
 
         proxyRes.on('end', function(){
             try {
+            const isSuccess = proxyRes.statusCode 
+                            && proxyRes.statusCode >= 200 
+                            && proxyRes.statusCode < 300
+            if(!isSuccess) {
+                ;(res as NextApiResponse).status(proxyRes.statusCode || 500).json(body)
+                 return resolve(true)
+            }
                 // converse cookies to header Authorization
                 const {accessToken, expiredAt} = JSON.parse(body)
                 // convert token to cookies

@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { useAuth } from '../hooks';
 import { useRouter } from 'next/router';
+import { LoginForm } from '@/components/auth';
+import { LoginPayload } from '@/models';
+import { Box } from '@mui/system';
+import { Paper, Typography } from '@mui/material';
 
 export default function LoginPage () {
     const  router = useRouter()
@@ -8,15 +12,15 @@ export default function LoginPage () {
     const { profile, login, logout} =  useAuth({
         revalidateOnMount: false,
     })
-    async function handleLoginClick () {
-        try {
-            await login()
-            console.log('redirect to dasboard');
-            router.push('/about')
-        } catch (error) {
-            console.log('failed to login ', error)
-        }
-    }
+    // async function handleLoginClick () {
+    //     try {
+    //         await login({ username: 'username', password: 'password'})
+    //         console.log('redirect to dasboard');
+    //         router.push('/about')
+    //     } catch (error) {
+    //         console.log('failed to login ', error)
+    //     }
+    // }
     // async function handleGetProfileClick () {
     //     try {
     //         await authApi.getProfile()
@@ -26,23 +30,48 @@ export default function LoginPage () {
     //         console.log('fail to get profile ', error)
     //     }
     // }
-    async function handleLogoutClick () {
+    // async function handleLogoutClick () {
+    //     try {
+    //         await logout()
+    //         console.log('redirect to login page');
+    //     } catch (error) {
+    //         console.log('fail to logout ', error)
+    //     }
+    // }
+
+    async function handleLoginSubmit ( payload : LoginPayload) {
+            console.log('handleLoginSubmit');
+
         try {
-            await logout()
-            console.log('redirect to login page');
+            await login(payload)
+            console.log('redirect to dasboard');
+            router.push('/')
         } catch (error) {
-            console.log('fail to logout ', error)
+            console.log('failed to login ', error)
         }
     }
 
   return (
-    <div>
-        <h1>Login page </h1>
+    <Box>
+        <Paper elevation={4}
+            sx={{
+                mx:'auto',
+                mt: 8,
+                p: 4,
+                maxWidth: '480px',
+                textAlign: 'center'
+            }}
+        >
+            <Typography component='h1' variant='h5' mb={3}>  Page WS - Login
+                <LoginForm onSubmit={handleLoginSubmit}/>
+            </Typography>
+        </Paper>
+        {/* <h1>Login page </h1>
         <p>Profile: {JSON.stringify(profile || {}, null, 4)}</p>
-        <button onClick={handleLoginClick}>Login</button>
-        {/* <button onClick={handleGetProfileClick}>Get profile</button> */}
+        <button onClick={()=>handleLoginClick}>Login</button>
+        <button onClick={handleGetProfileClick}>Get profile</button>
         <button onClick={handleLogoutClick}>Logout</button>
-        <button onClick={()=> router.push('/about')}>Go to about</button>
-    </div>
+        <button onClick={()=> router.push('/about')}>Go to about</button> */}
+    </Box>
   );
 }
