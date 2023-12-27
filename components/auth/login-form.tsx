@@ -16,12 +16,12 @@ export function LoginForm ({onSubmit} : LoginFormProps ) {
     const schema = yup.object().shape({
         username: yup
             .string()
-            .required('Please enter username')
-            . min(4, 'Username is required to have at least 4 characters'),
+            .required('Please enter username'),
+            // . min(4, 'Username is required to have at least 4 characters'),
         password: yup        
             .string()
             .required('Please enter password')
-            . min(4, 'Password is required to have at least 4 characters'),
+            // . min(4, 'Password is required to have at least 4 characters'),
     })
 
     const [showPassword, setShowPassword] = useState(false)

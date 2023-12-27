@@ -2,7 +2,10 @@ import { LayoutProps } from '@/models'
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { Box, Container, Stack } from '@mui/material'
-import { Footer, Header } from '../common'
+// import { Footer, Header } from '../common'
+import { Footer } from '../common'
+import dynamic from 'next/dynamic'
+
 
 export function MainLayout({ children }: LayoutProps) {
 	useEffect(() => {
@@ -10,6 +13,10 @@ export function MainLayout({ children }: LayoutProps) {
 
 		return () => console.log('MainLayout unmounting')
 	}, [])
+
+	// const Header = dynamic(() => import('../common/header').then((mod) => mod.Header), { ssr: false })
+	const Header = dynamic(() => import('../common/header'), { ssr: false })
+
 
 	return (
 		<Stack minHeight='100vh'>

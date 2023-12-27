@@ -6,6 +6,9 @@ import { LoginPayload } from '@/models';
 import { Box } from '@mui/system';
 import { Paper, Typography } from '@mui/material';
 
+import { getErrorMessage } from '@/utils'
+import { toast } from 'react-toastify'
+
 export default function LoginPage () {
     const  router = useRouter()
 
@@ -46,8 +49,9 @@ export default function LoginPage () {
             await login(payload)
             console.log('redirect to dasboard');
             router.push('/')
-        } catch (error) {
-            console.log('failed to login ', error)
+		} catch (error: unknown) {
+			const message = getErrorMessage(error)
+			toast.error(message)
         }
     }
 

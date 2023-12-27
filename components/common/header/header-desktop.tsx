@@ -4,17 +4,30 @@ import { useAuth } from '@/hooks'
 import clsx from 'clsx'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
 import { ROUTE_LIST } from './routes'
 
 export interface HeaderDesktopProps {}
 
 export function HeaderDesktop(props: HeaderDesktopProps) {
+    const router = useRouter()
+
     const { profile, logout} = useAuth()
 
     const isLogged = Boolean(profile?.username)
     const routeList = ROUTE_LIST.filter(route => !route.requireLogin === isLogged)
-    const router = useRouter()
+    // const [routeList, setRouteList] = useState(() =>
+	// 	ROUTE_LIST.filter((route) => !route.requireLogin)
+	// )
+
+	// server render menu not require login (A)
+	// client - first render menu not require login (B)
+	// client - useEffect render second time menu requireLogin
+
+	// useEffect(() => {
+	// 	// after the first render
+	// 	// calc routeList and setRouteList
+	// 	setRouteList(ROUTE_LIST.filter((route) => !route.requireLogin || isLoggedIn))
+	// }, [isLoggedIn])
 
 	return <Box display={{ xs:'none', md:'block'}} py={2} >
         <Container>
