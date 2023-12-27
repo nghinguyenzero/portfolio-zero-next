@@ -1,7 +1,8 @@
 import { authApi } from '@/api'
 import { StorageKeys } from '@/constants'
 import { LoginPayload, UserProfile } from '@/models'
-import useSWR from 'swr'
+import useSWR, { SWRConfiguration } from 'swr'
+
 // import { PublicConfiguration } from 'swr/dist/types'
 
 function getUserInfo(): UserProfile | null {
@@ -15,7 +16,7 @@ function getUserInfo(): UserProfile | null {
 
 // Auth --> Protected Pages
 // <Auth>{children}</Auth>
-export function useAuth(options?: Partial<any>) {
+export function useAuth(options?: Partial<SWRConfiguration>) {
 	const {
 		data: profile,
 		error,
