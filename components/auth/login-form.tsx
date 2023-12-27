@@ -2,7 +2,7 @@ import { Box } from '@mui/system'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { InputField } from '../form'
-import { Button, IconButton, InputAdornment } from '@mui/material'
+import { Button, CircularProgress, IconButton, InputAdornment } from '@mui/material'
 import { Visibility, VisibilityOff } from '@mui/icons-material'
 import { LoginPayload } from '@/models'
 import * as yup from 'yup'
@@ -25,7 +25,7 @@ export function LoginForm ({onSubmit} : LoginFormProps ) {
     })
 
     const [showPassword, setShowPassword] = useState(false)
-    const { control, handleSubmit} =  useForm<LoginPayload>({
+    const { control, handleSubmit, formState: {isSubmitting}} =  useForm<LoginPayload>({
         defaultValues: {
             username: '',
             password: ''
@@ -33,11 +33,11 @@ export function LoginForm ({onSubmit} : LoginFormProps ) {
         resolver: yupResolver(schema)
     })
 
-    function handleLoginSubmit(payload: LoginPayload ) {
+    async function handleLoginSubmit(payload: LoginPayload ) {
         console.log('handleLoginSubmit');
 
         console.log({payload});
-        onSubmit?.(payload)
+        await onSubmit?.(payload)
     }
 
 
@@ -58,7 +58,10 @@ export function LoginForm ({onSubmit} : LoginFormProps ) {
                 )
             }}
         />
-			<Button type="submit" variant="contained" fullWidth sx={{mt: 4}}>
+			<Button 
+                disabled={isSubmitting} 
+                startIcon={isSubmitting ? <CircularProgress color='inherit'  size='1em'/>: null} 
+                type="submit" variant="contained" fullWidth sx={{mt: 4}}>
 				Login
 			</Button>
     </Box>

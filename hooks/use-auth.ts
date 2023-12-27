@@ -1,30 +1,60 @@
-import useSWR from "swr";
-import { PublicConfiguration } from "swr/_internal";
-import { authApi } from "../api-client";
-import { LoginPayload } from "@/models";
+import { authApi } from '@/api'
+import { StorageKeys } from '@/constants'
+import { LoginPayload, UserProfile } from '@/models'
+import useSWR from 'swr'
+// import { PublicConfiguration } from 'swr/dist/types'
 
-export function useAuth (options?: Partial<PublicConfiguration>) {
+function getUserInfo(): UserProfile | null {
+	try {
+		return JSON.parse(localStorage.getItem(StorageKeys.USER_INFO) || '')
+	} catch (error) {
+		// console.log('failed to parse user info from local storage', error)
+		return null
+	}
+}
 
-    const { data: profile, error, mutate} = useSWR('/profile', {
-        delupingInterval: 60*60*1000,
-        revalidateOnFocus: true,
-        ...options
-    })
-    console.log({profile, error});
-     const firstLoading = profile === undefined && error === undefined
+// Auth --> Protected Pages
+// <Auth>{children}</Auth>
+export function useAuth(options?: Partial<any>) {
+	const {
+		data: profile,
+		error,
+		mutate,
+	} = useSWR<UserProfile | null>('/profile', {
+		dedupingInterval: 60 * 60 * 1000, // 1hr
+		revalidateOnFocus: false,
+		...options,
+		fallbackData: getUserInfo(),
+		onSuccess(data) {
+			// save user info to local storage
+			localStorage.setItem(StorageKeys.USER_INFO, JSON.stringify(data))
+		},
+		onError(err) {
+			// failed to get profile --> logout
+			console.log(err) // send error log to server if any
+			logout()
+		},
+	})
 
-    async function login(payload: LoginPayload) {
-        await authApi.login(payload)
-        await mutate()
-    }
+	const firstLoading = profile === undefined && error === undefined
 
-    async function logout() {
-        await authApi.logout()
-        await mutate(null, false)
-    }
+	async function login(payload: LoginPayload) {
+		await authApi.login(payload)
 
-    return { 
-        profile, error , login, logout, firstLoading
-    }
+		await mutate()
+	}
 
+	async function logout() {
+		await authApi.logout()
+		mutate(null, false)
+		localStorage.removeItem(StorageKeys.USER_INFO)
+	}
+
+	return {
+		profile,
+		error,
+		login,
+		logout,
+		firstLoading,
+	}
 }
