@@ -26,13 +26,12 @@ export function WorkFilters({ initialValues, onSubmit }: WorkFiltersProps) {
 			selectedTagList: [],
 			...initialValues,
 		},
-		resolver: yupResolver(schema),
+		// resolver: yupResolver (schema),
 	})
 
 	async function handleLoginSubmit(payload: WorkFiltersPayload) {
-		// await onSubmit?.(payload)
 		if (!payload) return
-		console.log('submit', payload)
+
 		payload.tagList_like = payload.selectedTagList?.join('|') || ''
 		delete payload.selectedTagList
 		await onSubmit?.(payload)
