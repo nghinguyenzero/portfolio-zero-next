@@ -1,11 +1,9 @@
 import { MainLayout } from '@/components/layout'
 import { WorkList } from '@/components/work'
 import { WorkFilters } from '@/components/work/work-filters'
-
-import { useWorkList } from '@/hooks'
-import { ListParams, WorkFiltersPayload } from '@/models'
-import { Box, Container, Pagination, Skeleton, Stack, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import { useWorkListInfinity } from '@/hooks/use-work-list-infinity'
+import { ListParams, ListResponse, Work, WorkFiltersPayload } from '@/models'
+import { Box, Button, Container, Skeleton, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
 
 export interface WorksPageProps {}
@@ -13,47 +11,45 @@ export interface WorksPageProps {}
 export default function WorksPage(props: WorksPageProps) {
 	const router = useRouter()
 	const filters: Partial<ListParams> = {
-		_page: 1,
-		_limit: 3,
 		...router.query,
 	}
 	const initFiltersPayload: WorkFiltersPayload = {
 		search: filters.title_like || '',
+		// selectedTagList: filters.tagList_like?.split('|') || [],
 	}
 
-	const { data, isLoading } = useWorkList({ params: filters, enabled: router.isReady })
-	const { _limit, _totalRows, _page } = data?.pagination || {}
-	const totalPages = Boolean(_totalRows) ? Math.ceil(_totalRows / _limit) : 0
+	const { data, isLoading, isValidating, size, setSize } = useWorkListInfinity({
+		params: filters,
+		enabled: router.isReady,
+	})
+	console.log({ data, isLoading, isValidating, size })
+	// data: [ responsePage1, responsePage2 ]
+	// responsePage1: { data, pagination }
+	// workList = [...data1, ...data2, ...dataN]
+	const workList: Array<Work> =
+		data?.reduce((result: Array<Work>, currentPage: ListResponse<Work>) => {
+			result.push(...currentPage.data)
 
-	const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+			return result
+		}, []) || []
+
+	// const { _limit, _totalRows, _page } = data?.pagination || {}
+	// const totalPages = Boolean(_totalRows) ? Math.ceil(_totalRows / _limit) : 0
+
+	function handleFiltersChange(newFilters: WorkFiltersPayload) {
 		router.push(
 			{
 				pathname: router.pathname,
 				query: {
 					...filters,
-					_page: value,
-				},
-			},
-			undefined,
-			{ shallow: true }
-		)
-	}
-
-    function handleFiltersChange(newFilters: WorkFiltersPayload) {
-		router.push(
-			{
-				pathname: router.pathname,
-				query: {
-					...filters,
-					_page: 1,
 					title_like: newFilters.search,
+					// tagList_like: newFilters.tagList_like,
 				},
 			},
 			undefined,
 			{ shallow: true }
 		)
 	}
-
 
 	return (
 		<Box>
@@ -63,7 +59,7 @@ export default function WorksPage(props: WorksPageProps) {
 						Work
 					</Typography>
 				</Box>
-                
+
 				{router.isReady ? (
 					<WorkFilters initialValues={initFiltersPayload} onSubmit={handleFiltersChange} />
 				) : (
@@ -80,13 +76,11 @@ export default function WorksPage(props: WorksPageProps) {
 					/>
 				)}
 
-				<WorkList workList={data?.data || []} loading={!router.isReady || isLoading} />
+				<WorkList workList={workList} loading={!router.isReady || isLoading} />
 
-				{totalPages > 0 && (
-					<Stack alignItems="center">
-						<Pagination count={totalPages} page={_page} onChange={handlePageChange}></Pagination>
-					</Stack>
-				)}
+				<Button variant="contained" onClick={() => setSize((x) => x + 1)}>
+					Load More
+				</Button>
 			</Container>
 		</Box>
 	)
