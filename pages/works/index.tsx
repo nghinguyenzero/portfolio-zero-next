@@ -1,12 +1,11 @@
 import { MainLayout } from '@/components/layout'
 import { WorkList } from '@/components/work'
 import { WorkFilters } from '@/components/work/work-filters'
-
 import { useWorkList } from '@/hooks'
 import { ListParams, WorkFiltersPayload } from '@/models'
 import { Box, Container, Pagination, Skeleton, Stack, Typography } from '@mui/material'
-import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import React from 'react'
 
 export interface WorksPageProps {}
 
@@ -19,6 +18,7 @@ export default function WorksPage(props: WorksPageProps) {
 	}
 	const initFiltersPayload: WorkFiltersPayload = {
 		search: filters.title_like || '',
+		selectedTagList: filters.tagList_like?.split('|') || [],
 	}
 
 	const { data, isLoading } = useWorkList({ params: filters, enabled: router.isReady })
@@ -39,7 +39,7 @@ export default function WorksPage(props: WorksPageProps) {
 		)
 	}
 
-    function handleFiltersChange(newFilters: WorkFiltersPayload) {
+	function handleFiltersChange(newFilters: WorkFiltersPayload) {
 		router.push(
 			{
 				pathname: router.pathname,
@@ -47,13 +47,13 @@ export default function WorksPage(props: WorksPageProps) {
 					...filters,
 					_page: 1,
 					title_like: newFilters.search,
+					tagList_like: newFilters.tagList_like,
 				},
 			},
 			undefined,
 			{ shallow: true }
 		)
 	}
-
 
 	return (
 		<Box>
@@ -63,7 +63,7 @@ export default function WorksPage(props: WorksPageProps) {
 						Work
 					</Typography>
 				</Box>
-                
+
 				{router.isReady ? (
 					<WorkFilters initialValues={initFiltersPayload} onSubmit={handleFiltersChange} />
 				) : (
