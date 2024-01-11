@@ -1,13 +1,17 @@
-export const ROUTE_LIST = [
+interface Route {
+	label: string
+	path: string
+	requireLogin?: boolean
+}
+
+export const ROUTE_LIST: Route[] = [
     {
         label: 'Home',
         path: '/',
     },
     {
         label: 'Works',
-        // path: '/works',
         path: '/works?_page=1&_limit=3',
-        requireLogin: true
     },
     {
         label: 'Blog',

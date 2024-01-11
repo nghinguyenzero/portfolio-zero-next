@@ -1,21 +1,24 @@
-import { useAuth } from '@/hooks/use-auth';
-import { useRouter } from 'next/router';
-import React ,{ useEffect } from 'react';
+import { useAuth } from '@/hooks'
+import { useRouter } from 'next/router'
+import React, { useEffect } from 'react'
 
 export interface AuthProps {
-    children : any
+	children: any
+	requireLogin?: boolean
 }
 
-export default function Auth ({ children }: AuthProps) {
-    const router = useRouter()
-    
-    const { profile, firstLoading} = useAuth()
+export function Auth({ children, requireLogin = false }: AuthProps) {
+	const router = useRouter()
+	const { profile, firstLoading } = useAuth()
 
-    useEffect(()=>{
-        if(!firstLoading && !profile?.username) router.push('/login')
-    }, [router, profile, firstLoading]) 
+	useEffect(() => {
+		// do nothing if not require login
+		if (!requireLogin) return
 
-    if(!profile?.username) return <p>Loading...</p>
+		if (!firstLoading && !profile?.username) router.replace('/login')
+	}, [router, profile, firstLoading, requireLogin])
 
-    return <div>{children}</div>
-    }
+	if (requireLogin && !profile?.username) return <p>Loading...</p>
+
+	return <div>{children}</div>
+}

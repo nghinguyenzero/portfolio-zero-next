@@ -1,6 +1,6 @@
 import { MainLayout } from '@/components/layout'
 import { WorkForm } from '@/components/work'
-import { useWorkDetails, useAddWork } from '@/hooks'
+import { useAddWork, useWorkDetails } from '@/hooks'
 import { Box, Container, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
 import Script from 'next/script'
@@ -44,6 +44,8 @@ export default function AddEditWorkPage(props: AddEditWorkPageProps) {
 		}
 	}
 
+	if (!router.isReady) return null
+
 	return (
 		<Box>
 			<Container>
@@ -72,3 +74,4 @@ export default function AddEditWorkPage(props: AddEditWorkPageProps) {
 }
 
 AddEditWorkPage.Layout = MainLayout
+AddEditWorkPage.requireLogin = true
