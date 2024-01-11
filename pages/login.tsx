@@ -66,7 +66,7 @@ export default function LoginPage () {
                 textAlign: 'center'
             }}
         >
-            <Typography component='h1' variant='h5' mb={3}>  Page WS - Login
+            <Typography component='h1' variant='h5' mb={3}>  Portfolio - Login
                 <LoginForm onSubmit={handleLoginSubmit}/>
             </Typography>
         </Paper>

@@ -22,8 +22,8 @@ const Home: NextPageWithLayout = () => {
 	return (
 		<Box>
 			<Seo data={{
-				title: 'NextJs Potifolo NghiNV',
-				description: 'Template NextJs Potifolo NghiNV',
+				title: 'Potifolo ZERO',
+				description: 'Template Next Potifolo',
 				thumbnailUrl: 'https://drive.google.com/file/d/1ow9xLxXDo7eJdhAhQSUKXtcc0-fm9z1k/view',
 				url: 'https://zero-next-six.vercel.app/',
 			}}/>

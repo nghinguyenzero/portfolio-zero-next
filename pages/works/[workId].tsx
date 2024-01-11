@@ -3,6 +3,8 @@ import { WorkForm } from '@/components/work'
 import { useWorkDetails } from '@/hooks'
 import { Box, Container, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
+import Script from 'next/script'
+import { toast } from 'react-toastify'
 
 export interface AddEditWorkPageProps {}
 
@@ -11,12 +13,26 @@ export default function AddEditWorkPage(props: AddEditWorkPageProps) {
 	const { workId } = router.query
 	const isAddMode = workId === 'add'
 
-	const { data: workDetails, isLoading } = useWorkDetails({
+	const {
+		data: workDetails,
+		isLoading,
+		updateWork,
+	} = useWorkDetails({
 		workId: (workId as string) || '',
 		enabled: router.isReady && !isAddMode,
 	})
 
 	console.log({ workDetails, isLoading })
+
+	async function handleSubmit(payload: FormData) {
+		try {
+			await updateWork(payload)
+			toast.success('update work successfully')
+			// navigate to details page
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	return (
 		<Box>
@@ -35,10 +51,12 @@ export default function AddEditWorkPage(props: AddEditWorkPageProps) {
 
 				<Box>
 					{(isAddMode || Boolean(workDetails)) && (
-						<WorkForm initialValues={workDetails} onSubmit={() => {}} />
+						<WorkForm initialValues={workDetails} onSubmit={handleSubmit} />
 					)}
 				</Box>
 			</Container>
+
+			<Script src="https://widget.cloudinary.com/v2.0/global/all.js" strategy="afterInteractive" />
 		</Box>
 	)
 }
