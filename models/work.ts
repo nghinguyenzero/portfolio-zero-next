@@ -1,5 +1,5 @@
 export interface Work {
-    id: number | string
+    id: any,//number | string
     title: string
     tagList: string []
     shortDescription: string
@@ -11,10 +11,11 @@ export interface Work {
 
 export interface WorkPayload extends Work {
 	// ...
-    thumbnail: null | {
-		file: File | null
-		previewUrl: string
-	}
+    // thumbnail: null | {
+	// 	file: File | null
+	// 	previewUrl: string
+	// }
+    thumbnail: any
 }
 
 
