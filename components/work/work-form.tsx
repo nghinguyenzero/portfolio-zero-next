@@ -46,6 +46,7 @@ export function WorkForm({ initialValues, onSubmit }: WorkFormProps) {
 
 			// 	return fileSize <= MAX_SIZE
 			// }),
+			
 	})
 
 	const { data } = useTagList({})
