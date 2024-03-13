@@ -45,12 +45,12 @@ export function WorkForm({ initialValues, onSubmit }: WorkFormProps) {
 			title: '',
 			shortDescription: '',
 			tagList: [],
-			thumbnail: initialValues?.id
-				? {
-						file: null,
-						previewUrl: initialValues?.thumbnailUrl,
-				  }
-				: null,
+			// thumbnail: initialValues?.id
+			// 	? {
+			// 			file: null,
+			// 			previewUrl: initialValues?.thumbnailUrl,
+			// 	  }
+			// 	: null,
 			fullDescription: '',
 			...initialValues,
 		},
