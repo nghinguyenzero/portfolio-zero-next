@@ -33,7 +33,9 @@ export function WorkForm({ initialValues, onSubmit }: WorkFormProps) {
 				
 				// required when add
 				// optional when edit
-				if (Boolean(initialValues?.id) || Boolean(value?.file)) return true
+				if (Boolean(initialValues?.id)) return true
+				if (value && value?.file && Boolean(value?.file)) return true
+
 
 				// return context.createError({ message: 'Please select an image.' })
 				return false
