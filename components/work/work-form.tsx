@@ -20,33 +20,6 @@ export function WorkForm({ initialValues, onSubmit }: WorkFormProps) {
 		thumbnail: yup
 			.object()
 			.nullable()
-			// .test('test-required', 'Please select an image.', (value) => {
-				// console.log({value});
-				// const a = {
-				// 	file: {
-				// 		name: '379897765_329930696070688_20003039057143553_n.jpg',
-				// 		size: 1112,
-				// 		type: "image/jpeg",
-				// 	},
-				// 	previewUrl: 'blob:http://localhost:3000/67d74d0d-57e9-48c2-acb4-a77a0a738ac9',
-				// }
-				
-				// required when add
-				// optional when edit
-				// if (Boolean(initialValues?.id) || Boolean(value?.file)) return true
-
-				// return context.createError({ message: 'Please select an image.' })
-			// 	return false
-			// })
-			// .test('test-size', 'Maximum size exceeded. Please select another file.', (value) => {
-			// 	console.log({value});
-			// 	const fileSize = value?.file?.['size'] || 0
-			// 	const MB_TO_BYTES = 1024 * 1024
-			// 	const MAX_SIZE = 3 * MB_TO_BYTES // 3MB
-
-			// 	return fileSize <= MAX_SIZE
-			// }),
-			
 	})
 
 	const { data } = useTagList({})
