@@ -11,8 +11,8 @@ export interface Work {
 
 export interface WorkPayload extends Work {
 	// ...
-	thumbnail: null | {
-		file: File | null
+	thumbnail: any | {
+		file: any//File | null
 		previewUrl: string
 	}
 }
