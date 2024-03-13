@@ -33,11 +33,7 @@ export function InputField<T extends FieldValues>({
 			margin="normal"
 			name={name}
 			value={value}
-			onChange={(event: any// ChangeEvent<HTMLInputElement>
-                ) => {
-				onChange(event)
-				externalOnChange?.(event)
-			}}
+			onChange={onChange}
 			onBlur={onBlur}
 			inputRef={ref}
 			error={!!error}
