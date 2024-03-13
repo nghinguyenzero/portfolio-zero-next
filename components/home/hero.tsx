@@ -19,7 +19,7 @@ export function HeroSection () {
                         component='h1' variant='h3' fontWeight='bold' 
                         mb={{ xs: 3.5, md: 5}}
                     >
-                    Hiii ^^ <br/>  Miss me yet ?
+                    Hello <br/>Welcome to my world !!
                     </Typography>
 
                     <Typography 

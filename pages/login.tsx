@@ -70,6 +70,7 @@ export default function LoginPage () {
                 <LoginForm onSubmit={handleLoginSubmit}/>
             </Typography>
         </Paper>
+        <p>nghinguyenglobal@gmail.com</p>
         {/* <h1>Login page </h1>
         <p>Profile: {JSON.stringify(profile || {}, null, 4)}</p>
         <button onClick={()=>handleLoginClick}>Login</button>

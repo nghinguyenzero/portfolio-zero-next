@@ -64,5 +64,7 @@ export function LoginForm ({onSubmit} : LoginFormProps ) {
                 type="submit" variant="contained" fullWidth sx={{mt: 4}}>
 				Login
 			</Button>
+        <p>nghinguyenglobal@gmail.com</p>
+
     </Box>
 }
