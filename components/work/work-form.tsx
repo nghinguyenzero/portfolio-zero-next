@@ -33,19 +33,20 @@ export function WorkForm({ initialValues, onSubmit }: WorkFormProps) {
 				
 				// required when add
 				// optional when edit
-				if (Boolean(initialValues?.id || value?.file)) return true
+				if (Boolean(initialValues?.id)) return true
 
 
 				// return context.createError({ message: 'Please select an image.' })
 				return false
 			})
 			.test('test-size', 'Maximum size exceeded. Please select another file.', (value) => {
-				console.log({value});
-				const fileSize = value?.file?.['size'] || 0
-				const MB_TO_BYTES = 1024 * 1024
-				const MAX_SIZE = 3 * MB_TO_BYTES // 3MB
+				// console.log({value});
+				// const fileSize = value?.file?.['size'] || 0
+				// const MB_TO_BYTES = 1024 * 1024
+				// const MAX_SIZE = 3 * MB_TO_BYTES // 3MB
 
-				return fileSize <= MAX_SIZE
+				// return fileSize <= MAX_SIZE
+				return true
 			}),
 	})
 
