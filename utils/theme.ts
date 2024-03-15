@@ -8,7 +8,7 @@ export let theme = createTheme({
 	},
 	palette: {
 		primary: {
-			main: '#FF6464',
+			main: '#3498db',
 		},
 		secondary: {
 			light: '#EDF7FA',
@@ -48,7 +48,7 @@ export let theme = createTheme({
 			styleOverrides: {
 				root: {
 					color: 'black',
-					'&:hover , &.active': { color: '#FF6464'}
+					'&:hover , &.active': { color: '#3498db'}
 				}
 			}
 		},

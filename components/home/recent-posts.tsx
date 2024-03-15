@@ -10,20 +10,27 @@ export function RecentPosts () {
         {
             id: 1,
             slug: '',
-            title: 'Love 💗',
+            title: 'Vue 👨🏽‍💻',
             publishedDate: '2022-06-18T10:00:00Z',
-            tagList: ['Family', 'Friend',],
-            description: `Love is an intricate dance of emotions, weaving connections between hearts. It's a boundless force, nurturing souls, transcending barriers, and painting life with hues of passion, tenderness, and understanding.`
+            tagList: ['Reactive Binding', 'Component-based'],
+            description: `A progressive JavaScript fw for building user interfaces. It offers a simple and flexible approach to front-end development with its reactive data binding and component-based architecture. Vue.js is known for its gentle learning curve, making it suitable for both beginners and experienced developers. It is often praised for its simplicity & performance.`
         },
         {
             id: 2,
             slug: '',
-            title: 'Hope 🍀',
+            title: 'React ⚛️',
             publishedDate: '2022-06-18T10:00:00Z',
-            tagList: ['Light', 'Faith'],
-            description: `Hope is the beacon amid darkness, a whisper of possibility when all seems lost. It fuels resilience, kindles dreams, and breathes life into aspirations, offering solace, strength, and unwavering optimism.`
+            tagList: ['JSX Syntax','Component-based'],
+            description: `Developed by Facebook, is a popular JavaScript library for building user interfaces. It emphasizes the component-based architecture, allowing developers to create reusable UI components. With its virtual DOM and JSX syntax, React.js enables efficient rendering and seamless updates, making it ideal for building dynamic web applications.`
+        },
+        {
+            id: 3,
+            slug: '',
+            title: 'Angular 🅰️',
+            publishedDate: '2022-06-18T10:00:00Z',
+            tagList: ['Two-way binding', 'Dependency-injection'],
+            description: `A comprehensive front-end framework developed by Google. It offers a full-fledged solution for building single-page applications with features like two-way data binding and dependency injection. Angular's structured approach and extensive ecosystem make it suitable for large-scale and complex projects.`
         }
-
     ]
   return (
     <Box component='section' bgcolor='secondary.light' pt={2} pb={4}>
@@ -46,7 +53,7 @@ export function RecentPosts () {
                 xs: 'column',
                 md: 'row'
             }} 
-                spacing={4}
+                spacing={3}
                 sx={{
                     '&>div': {
                         width: {

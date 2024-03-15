@@ -15,13 +15,12 @@ export function PostCard ({post}: PostCardProps) {
     <Card>
         <CardContent>
           <PostItem post={post}/>
-            <Typography variant='h5' fontWeight='bold'>
+            {/* <Typography variant='h5' fontWeight='bold'>
               {post.title}
             </Typography>
 
             <Stack direction='row' my={2}>
               <Typography variant='body1'>
-                {/* {format(+post.publishDate, 'dd MMM yyyy')} */}
 				        {format(new Date(post.publishedDate), 'dd MMM yyyy')}
 
               </Typography>
@@ -31,7 +30,7 @@ export function PostCard ({post}: PostCardProps) {
               <Typography variant='body1'> {post.tagList.join(', ')}</Typography>
             </Stack>
 
-            <Typography variant='body2'>{post.description}</Typography>
+            <Typography variant='body2'>{post.description}</Typography> */}
 
         </CardContent>
     </Card>
