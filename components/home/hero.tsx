@@ -6,7 +6,7 @@ import avatar from "@/images/avatar.png";
 
 export function HeroSection () {
   return (
-    <Box component='section' pt={{xs:2, md: 10}} pb={{xs: 4, md: 5}}>
+    <Box component='section' pt={{xs:3, md: 5}} pb={{xs: 4, md: 5}}>
         <Container>
             <Stack 
                 spacing={8} 
@@ -17,13 +17,13 @@ export function HeroSection () {
                 <Box>
                     <Typography 
                         component='h1' variant='h3' fontWeight='bold' 
-                        mb={{ xs: 3.5, md: 5}}
+                        mb={{ xs: 2, md: 3}}
                     >
                     Hello <br/>  Welcome to my World
                     </Typography>
 
                     <Typography 
-                        mb={{ xs: 3.5, md: 5}}
+                        mb={{ xs: 2, md: 3}}
                     >
                        
 
